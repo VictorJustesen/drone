@@ -1,0 +1,9 @@
+@use '../variables';
+
+.Map {
+    position: absolute;
+    top: 60px; /* Adjust this value if you have a top bar */
+    left: 60px; /* Adjust this value to match the width of your sidebar */
+    right: 0;
+    bottom: 0;
+  }

@@ -1,0 +1,149 @@
+@use '../variables' as *;
+
+.top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color:$pbg;
+    border-bottom: 1px solid $oobg;
+    z-index: 1001;
+    
+    color: $obg;
+    padding: 0px 20px;
+    padding-left: 0px;
+}
+.topbar{
+    @include flexc();
+    height: 100%;
+    padding:0;
+    justify-content: start;
+}
+
+.topbar > * {
+    @include flexc();
+    border-right: 1px solid $oobg;
+    height: 60px !important;
+    width: 250px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    padding-right: 5px;
+    border-radius: 5px;
+    height: 85%;
+    position: relative; // Needed to position the ::after pseudo-element
+    
+    // The ::after pseudo-element will cover the whole area except the last 5px
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      right: 10px; // 5px from the right edge
+      bottom: 5px;
+      left: 0;
+      background-color: $pbg; // Same as the element's original background-color
+      z-index: -1;
+      border-radius: 5px;
+      transition: background-color 0.3s ease; // Transition for a smooth hover effect
+    }
+  
+    &:hover {
+      color: $ptext;
+      
+      // Change the background-color of the ::after pseudo-element on hover
+      &::after {
+        background-color: $oobg;
+      }
+    }
+  }
+.endgroup{
+    @include flexc();
+
+    margin-left: auto;
+    border-right: 0px solid $oobg;
+    justify-content: space-between;
+    width:300px;
+    gap: 10px;
+    
+    &:hover{
+        color: $obg;
+        background-color: $pbg;
+      }
+}
+
+
+
+
+.drone{
+    @include flexc();
+    padding-left: 20px;
+}
+.date{
+    @include flexc();
+    padding-left: 20px;
+}
+
+.support{
+    @include flexc();
+    gap: 5px;
+    color:orange;
+
+    width:150px;
+    justify-content: space-between;
+    padding-left:10px;
+    padding-right:10px;
+
+    background-color: $oobg;
+    border-radius: 5px;
+    height: 75%;
+}
+.back{
+    
+    width:45px;
+    justify-content: center;
+    margin-left:10px;
+    
+}
+
+.backback{
+    margin-left:-5px
+}
+.missionname{
+    @include flexc();
+padding-left:20px;
+    color: $ptext !important;
+}
+
+.start{
+    @include flexc();
+
+    width:150px;
+    justify-content: space-between;
+    padding-left:10px;
+    padding-right:10px;
+
+    background-color: $oobg;
+    border-radius: 5px;
+    height: 75%;
+}
+
+.start>p{
+    width: 100px;
+}
+
+.start:hover{
+    color: $ptext;
+    background-color: $ooobg;
+  }
+
+  .support:hover{
+    background-color: $ooobg;
+  }
+
+.dots:hover{
+    color: $ptext;
+
+}
+  .endgroup>*{
+    transition: 0.3s ease;
+
+  }

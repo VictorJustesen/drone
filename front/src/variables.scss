@@ -1,0 +1,13 @@
+$ptext: white;
+$pbg:#181c1c;
+$obg:#7e7c6f;
+$oobg:#2f3136;
+$ooobg:#47494c;
+
+@mixin flexc($direction: row) {
+    gap: 10px;
+
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    }

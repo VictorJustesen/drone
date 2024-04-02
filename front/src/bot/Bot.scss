@@ -1,0 +1,57 @@
+@use '../variables';
+
+.Bot {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(variables.$obg, 0.8); // Semi-transparent overlay
+    color: variables.$ptext;
+    z-index: 1001;
+    display: flex;
+    justify-content: center; // Center the contents
+    align-items: center;
+    padding: 5px 20px;
+    gap: 10px; // Add space between child elements
+
+    // Style for the coordinates display
+    .coordinates-display {
+        background-color: rgba(0, 0, 0, 0.6); // Darker and more transparent
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-right: auto; // Push everything else to the right
+    }
+
+    // Style for the input fields and go button
+    .coordinate-inputs {
+        display: flex;
+        gap: 5px;
+
+        input {
+            padding: 5px;
+            border: 1px solid darken(variables.$pbg, 10%);
+            border-radius: 5px;
+            color: variables.$ptext;
+            background-color: rgba(variables.$obg, 0.8);
+            &::placeholder {
+                color: lighten(variables.$ptext, 20%);
+            }
+            &:focus {
+                outline: none;
+                border-color: lighten(variables.$ptext, 40%);
+            }
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: variables.$ptext;
+            color: variables.$obg;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+                background-color: lighten(variables.$ptext, 10%);
+            }
+        }
+    }
+}

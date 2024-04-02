@@ -1,0 +1,53 @@
+@use '../variables';
+
+.Sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  background-color: variables.$pbg;
+  border-right: 1px solid #e9ecef;
+  z-index: 1000;
+  overflow-y: auto;
+  border-top: #e9ecef;
+  color: variables.$obg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Sidebar-item {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    justify-content: center; 
+  align-items: center; 
+  transition: 0.3s ease;
+  cursor: pointer;
+  &:hover{
+    color: variables.$ptext;
+    background-color: variables.$oobg;
+  }
+  &.active {
+    color: orange; // Active item background color
+    background-color: variables.$oobg;
+  }
+}
+
+  
+
+  .Sidebar-group {
+    border-top: 1px solid variables.$oobg;
+    width: 100%;
+    justify-content: center; 
+  align-items: center; 
+  }
+  
+  
+  .flip-x {
+    /* This will flip the icon horizontally */
+    transform: scaleX(-1);
+  }
