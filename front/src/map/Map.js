@@ -1,33 +1,52 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import './Map.scss'
+import React, { useEffect } from 'react';
 
-const position = [49.2785566, 31.1420338];
+const WindyMap = ({ apiKey }) => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://api.windy.com/assets/libBoot.js';
+    script.async = true;
 
-const MapEvents = ({ onEvent }) => {
-  const map = useMapEvents({
-    mousemove: (e) => {
-      onEvent(e.latlng);
-    }
-  });
-  return null;
+    script.onload = () => {
+      // Initialization options for Windy API
+      const options = {
+        key: apiKey,
+        lat: 49.2785566,
+        lon: 31.1420338,
+        zoom: 5,
+      };
+
+      // Initialize Windy API
+      window.windyInit(options, windyAPI => {
+        const { map } = windyAPI;
+        const L = window.L; // Access Leaflet from Windy API's scope
+        L.popup()
+          .setLatLng([49.2785566, 31.1420338])
+          .setContent('Hello World')
+          .openOn(map);
+      });
+    };
+
+    script.onerror = (error) => {
+      console.error('Failed to load the Windy API script:', error);
+    };
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [apiKey]);
+
+  return <div id="windy" style={{ height: '100%', width: '100%' }} />;
 };
 
-const Map = ({ onCoordinateChange }) => {
+const Map = () => {
+  const apiKey = process.env.REACT_APP_WINDY_API_KEY;  // Ideally, use an environment variable here
+
   return (
-    <MapContainer className='Map' center={position} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-      <MapEvents onEvent={onCoordinateChange} />
-    </MapContainer>
+    <div style={{ height: '100vh', width: '100%' }}>
+      <WindyMap apiKey={apiKey} />
+    </div>
   );
 };
 

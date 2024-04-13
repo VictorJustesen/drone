@@ -12,24 +12,29 @@ const Bot = ({ coordinates }) => {
 
   return (
     <div className="Bot">
-      <div className="coordinates-display">
-        {coordinates && `X: ${coordinates.lat.toFixed(5)}, Y: ${coordinates.lng.toFixed(5)}`}
+      <div className="xcord">
+        {coordinates && `X: ${coordinates.lat.toFixed(5)}`}
+       
       </div>
-      <div className="coordinate-inputs">
-        <input
+      <div className="ycord">
+      { coordinates && `Y: ${coordinates.lng.toFixed(5)}`}
+      </div>
+      
+        <input className="iycord"
           type="text"
           placeholder="Latitude"
           value={lat}
           onChange={(e) => setLat(e.target.value)}
         />
         <input
+         className="ixcord"
           type="text"
           placeholder="Longitude"
           value={lng}
           onChange={(e) => setLng(e.target.value)}
         />
-        <button onClick={handleGoClick}>Go</button>
-      </div>
+        <button onClick={handleGoClick}>GO</button>
+      
     </div>
   );
 };

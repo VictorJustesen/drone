@@ -1,4 +1,4 @@
-@use '../variables';
+@use '../variables' as *;
 
 .Map {
     position: absolute;
@@ -7,3 +7,34 @@
     right: 0;
     bottom: 0;
   }
+  .leaflet-control-container {
+    position: absolute !important; 
+    bottom: 135px !important; 
+    right: 100px !important;
+    border: none !important; 
+  }
+  .leaflet-control-zoom {
+    border: none !important; 
+    background-color: $pbg !important;
+    opacity: 1;
+    scale: 1.2;
+
+  }
+    .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+      all: unset;
+      background-color: $oobg !important;
+      transition: background-color 0.3s ease;
+    &:hover {
+      background-color: $ooobg !important;
+    }}
+
+    .leaflet-control-zoom-in, .leaflet-control-zoom-out>span {
+      color: $ptext !important;
+     
+      
+
+    }
+  
+    .leaflet-control-attribution{
+      display: none;
+    }

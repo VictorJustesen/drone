@@ -1,12 +1,12 @@
-@use '../variables';
+@use '../variables' as *;
 
 .Bot {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(variables.$obg, 0.8); // Semi-transparent overlay
-    color: variables.$ptext;
+    background-color: transparent; // Semi-transparent overlay
+    color: $ptext;
     z-index: 1001;
     display: flex;
     justify-content: center; // Center the contents
@@ -21,37 +21,55 @@
         border-radius: 5px;
         margin-right: auto; // Push everything else to the right
     }
-
-    // Style for the input fields and go button
-    .coordinate-inputs {
-        display: flex;
-        gap: 5px;
-
-        input {
-            padding: 5px;
-            border: 1px solid darken(variables.$pbg, 10%);
-            border-radius: 5px;
-            color: variables.$ptext;
-            background-color: rgba(variables.$obg, 0.8);
-            &::placeholder {
-                color: lighten(variables.$ptext, 20%);
-            }
-            &:focus {
-                outline: none;
-                border-color: lighten(variables.$ptext, 40%);
-            }
+.xcord, .ycord, .iycord, .ixcord{
+    color:$ptext;
+    background-color: $oobg;
+padding:5px;
+border-radius:5px;
+width:95px;
+height:20px;
+border:none;
+font-size: 15px;
+}
+.xcord{
+position:absolute;
+left:100px;
+bottom:100px;
+}
+.ycord{
+    position:absolute;
+    left:100px;
+    bottom:60px;
+    }
+    
+    .ixcord{
+        position:absolute;
+        left:210px;
+        bottom:100px;
         }
+    .iycord{
+            position:absolute;
+            left:210px;
+            bottom:60px;
+            }
+    // Style for the input fields and go button
+    
 
         button {
-            padding: 5px 10px;
-            background-color: variables.$ptext;
-            color: variables.$obg;
+            color:$ptext;
+            background-color: $oobg;
+            position: absolute;
+            left:320px;
+            bottom:60px;
+            padding: 24px 24px;
             border: none;
             border-radius: 5px;
+            font-size: 20px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
             &:hover {
-                background-color: lighten(variables.$ptext, 10%);
+                background-color: $ooobg;
             }
         }
-    }
+    
 }
