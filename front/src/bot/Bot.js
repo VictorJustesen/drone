@@ -7,7 +7,6 @@ const Bot = ({ coordinates }) => {
 
   const handleGoClick = () => {
     // You will need to implement a function that pans the map to the new coordinates.
-    console.log('Panning to: ', lat, lng);
   };
 
   return (
